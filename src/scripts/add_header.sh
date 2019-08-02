@@ -26,7 +26,7 @@ HEADER=" License: MIT
 
  The following copyright applies
 
- Copyright © 2019 SprintWORX GmbH, authors: Matthias Fritsch and Daniel Bişar 
+ Copyright © 2019 SprintWORX GmbH, authors: Matthias Fritsch and Daniel Bişar
 
  <>< he is alive"
 
@@ -58,6 +58,7 @@ do
             echo "./add_header.sh --dry-run *.cs"
             echo 
             echo "ATTENTION: we take no responsability for any damages done by running this script - make backups first!"
+            echo "A good way to check the result: use a git repo and look for the differences created after the script was run."
             echo "Copyright © 2019 SprintWORX GmbH, authors: Matthias Fritsch and Daniel Bişar"
             echo "License: MIT"
             exit 0
@@ -115,6 +116,7 @@ for file in "${FILES[@]}"; do
         echo "comment_marker: $comment_marker"
         echo "escaped_marker: $escaped_marker"
         [ "$IS_VERBOSE" = "true" ] && echo "$modified_file_content"
+        echo
     else
         echo "$modified_file_content" > "$file"
     fi
