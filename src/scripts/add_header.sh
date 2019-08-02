@@ -59,6 +59,7 @@ do
             echo 
             echo "ATTENTION: we take no responsability for any damages done by running this script - make backups first!"
             echo "A good way to check the result: use a git repo and look for the differences created after the script was run."
+            echo "Undo changes by git checkout -- ./*"
             echo "Copyright © 2019 SprintWORX GmbH, authors: Matthias Fritsch and Daniel Bişar"
             echo "License: MIT"
             exit 0
@@ -103,10 +104,10 @@ for file in "${FILES[@]}"; do
     if [ "$extension" = "sh" ]; then
         first_line=$(head -n 1 "$file")
         other_lines=$(tail -n +2 "$file")
-        modified_file_content=$(echo "$first_line" && echo "$header" && echo "$other_lines")
+        modified_file_content=$(echo "$first_line" && echo "$header" && echo "$other_lines" && echo)
     else
         file_content=$(cat "$file")
-        modified_file_content=$(echo "$header" && echo && echo "$file_content")
+        modified_file_content=$(echo "$header" && echo && echo "$file_content" && echo)
     fi
 
     # dry run just prints the informations
